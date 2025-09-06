@@ -120,8 +120,9 @@ while True:
     # Visuals
     light_grey = pygame.Color('grey83')
     red = pygame.Color('red')
+    aqua = pygame.Color('aqua')
     screen.fill(bg_color)  # Clear screen with background color
-    pygame.draw.rect(screen, light_grey, player)  # Draw player paddle
+    pygame.draw.rect(screen,aqua, player)  # Draw player paddle
     # TODO Task 3: Change the Ball Color
     pygame.draw.ellipse(screen, light_grey, ball)  # Draw ball
     player_text = basic_font.render(f'{score}', False, light_grey)  # Render player score
