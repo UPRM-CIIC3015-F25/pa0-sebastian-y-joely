@@ -22,8 +22,8 @@ def ball_movement():
     if ball.colliderect(player):
      if abs(ball.bottom - player.top) < 10:  # Check if ball hits the top of the paddle
             # TODO Task 2: Fix score to increase by 1
-         score += 1 # Increase player score
-         ball_speed_y *= -1 # Reverse ball's vertical directions
+         score += 1.0 # Increase player score
+         ball_speed_y *=1.0  # Reverse ball's vertical directions
             # TODO Task 6: dd sound effects HERE
     # Ball collision with top boundary
     if ball.top <= 0:
