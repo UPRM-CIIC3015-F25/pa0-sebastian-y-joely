@@ -1,4 +1,7 @@
+import os
+
 import pygame, sys, random
+import pygame.mixer
 
 def ball_movement():
     """
@@ -14,7 +17,7 @@ def ball_movement():
     # TODO Task 5 Create a Merge Conflict
     speed = 7
     if start:
-        ball_speed_x = speed * random.choice((1, -1))  # Randomize initial horizontal direction
+        ball_speed_x = speed * random.choice((2, 5))  # Randomize initial horizontal direction
         ball_speed_y = speed * random.choice((1, -1))  # Randomize initial vertical direction
         start = False
 
@@ -23,8 +26,8 @@ def ball_movement():
      if abs(ball.bottom - player.top) < 10:  # Check if ball hits the top of the paddle
             # TODO Task 2: Fix score to increase by 1
          score += 1 # Increase player score
-         ball_speed_y *= -1 # Reverse ball's vertical directions
-            # TODO Task 6: Add sound effects HERE
+         ball_speed_y *= -1 # R 1everse ball's vertical directions
+         hit_sound.play()
 
     # Ball collision with top boundary
     if ball.top <= 0:
@@ -62,6 +65,7 @@ def restart():
 # General setup
 pygame.mixer.pre_init(44100, -16, 1, 1024)
 pygame.init()
+hit_sound = pygame.mixer.Sound('hit.wav')
 clock = pygame.time.Clock()
 
 # Main Window setup
