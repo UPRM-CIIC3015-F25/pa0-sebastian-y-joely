@@ -1,5 +1,5 @@
 import pygame, sys, random
-
+import pygame.mixer
 def ball_movement():
     """
     Handles the movement of the ball and collision detection with the player and screen boundaries.
@@ -20,11 +20,10 @@ def ball_movement():
 
     # Ball collision with the player paddle
     if ball.colliderect(player):
-     if abs(ball.bottom - player.top) < 10:  # Check if ball hits the top of the paddle
-            # TODO Task 2: Fix score to increase by 1
-         score += 1 # Increase player score
-         ball_speed_y *= -1 # Reverse ball's vertical directions
-            # TODO Task 6: Add sound effects HERE
+        if abs(ball.bottom - player.top) < 10:  # Check if ball hits the top of the paddle
+            score += 1  # Increase player score
+            ball_speed_y *= -1  # Reverse ball's vertical direction
+            hit_sound.play()  # ✅ Play sound effect
 
     # Ball collision with top boundary
     if ball.top <= 0:
@@ -62,6 +61,7 @@ def restart():
 # General setup
 pygame.mixer.pre_init(44100, -16, 1, 1024)
 pygame.init()
+hit_sound = pygame.mixer.Sound("hit.wav")
 clock = pygame.time.Clock()
 
 # Main Window setup
